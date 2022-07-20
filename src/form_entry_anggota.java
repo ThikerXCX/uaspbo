@@ -12,15 +12,15 @@ import java.sql.Time;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class form_entry_mahasiswa extends javax.swing.JDialog {
+public class form_entry_anggota extends javax.swing.JDialog {
 
-    public form_entry_mahasiswa(java.awt.Frame parent, boolean modal) {
+    public form_entry_anggota(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         tampil_tb_mahasiswa();
     }
 
-    form_entry_mahasiswa(form_entry_peminjaman aThis, boolean rootPaneCheckingEnabled) {
+    form_entry_anggota(form_entry_peminjaman aThis, boolean rootPaneCheckingEnabled) {
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
@@ -42,16 +42,13 @@ public class form_entry_mahasiswa extends javax.swing.JDialog {
         reset = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         txt_nim = new javax.swing.JTextField();
         txt_nama = new javax.swing.JTextField();
         txt_jurusan = new javax.swing.JTextField();
         bnt_update = new javax.swing.JButton();
         delete = new javax.swing.JButton();
         t_tgl_lahir = new javax.swing.JTextField();
-        t_tgl_masuk = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(204, 255, 204));
@@ -59,7 +56,7 @@ public class form_entry_mahasiswa extends javax.swing.JDialog {
         jLabel1.setBackground(new java.awt.Color(255, 153, 51));
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("FORM ENTRY MAHASISWA");
+        jLabel1.setText("FORM ENTRY ANGGOTA");
 
         jPanel1.setBackground(new java.awt.Color(102, 255, 204));
 
@@ -104,7 +101,7 @@ public class form_entry_mahasiswa extends javax.swing.JDialog {
 
         jPanel2.setBackground(new java.awt.Color(102, 255, 204));
 
-        jLabel2.setText("NIM");
+        jLabel2.setText("No Anggota");
 
         jLabel3.setText("Nama");
 
@@ -126,9 +123,7 @@ public class form_entry_mahasiswa extends javax.swing.JDialog {
 
         jLabel5.setText("Tanggal Lahir");
 
-        jLabel6.setText("Jurusan");
-
-        jLabel7.setText("Tanggal Masuk");
+        jLabel6.setText("Kedudukan");
 
         bnt_update.setText("Update");
         bnt_update.addActionListener(new java.awt.event.ActionListener() {
@@ -146,25 +141,20 @@ public class form_entry_mahasiswa extends javax.swing.JDialog {
 
         t_tgl_lahir.setToolTipText("");
 
-        t_tgl_masuk.setToolTipText("YYYY-MM-DD");
-
         jLabel8.setText("YYYY-MM-DD");
-
-        jLabel9.setText("YYYY-MM-DD");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(21, 21, 21)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3)
                     .addComponent(jLabel2)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7))
+                    .addComponent(jLabel6))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txt_nim)
@@ -184,11 +174,7 @@ public class form_entry_mahasiswa extends javax.swing.JDialog {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(t_tgl_lahir, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel8))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(t_tgl_masuk, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel9)))
+                                .addComponent(jLabel8)))
                         .addGap(60, 60, 60)))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
@@ -216,12 +202,7 @@ public class form_entry_mahasiswa extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(txt_jurusan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(t_tgl_masuk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
-                .addGap(17, 17, 17)
+                .addGap(45, 45, 45)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(simpan)
                     .addComponent(reset))
@@ -263,7 +244,7 @@ public class form_entry_mahasiswa extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanActionPerformed
-        String no_nim="", nama="", tempat_lahir="", jurusan="", tanggal_lahir, tanggal_masuk;
+        String no_nim="", nama="", tempat_lahir="", jurusan="", tanggal_lahir;
         //java.util.Date tanggal_lahir;
         //java.util.Date tanggal_masuk;
         
@@ -273,12 +254,12 @@ public class form_entry_mahasiswa extends javax.swing.JDialog {
         jurusan = txt_jurusan.getText();
         //tanggal_masuk = (java.util.Date) this.txt_tanggal_masuk.getDate();
         //tanggal_lahir = (java.util.Date) this.txt_tanggal_lahir.getDate();
-        tanggal_masuk = t_tgl_masuk.getText();
+        //tanggal_masuk = t_tgl_masuk.getText();
         tanggal_lahir = t_tgl_lahir.getText();
         
         try {
             Connection con = new koneksi_2().getConnection();
-            String sql = "insert into tb_mahasiswa values (?,?,?,?,?,?)";
+            String sql = "insert into tb_anggota values (?,?,?,?,?)";
             PreparedStatement stat = (PreparedStatement) con.prepareStatement(sql);
             stat.setString(1, no_nim);
             stat.setString(2, nama);
@@ -287,7 +268,7 @@ public class form_entry_mahasiswa extends javax.swing.JDialog {
             stat.setString(4, tanggal_lahir);
             stat.setString(5, jurusan);
             //stat.setDate(6, new java.sql.Date(tanggal_masuk.getTime()));
-            stat.setString(6, tanggal_masuk);
+            //stat.setString(6, tanggal_masuk);
             stat.executeUpdate();
             JOptionPane.showMessageDialog(null, "Menyimpan data BERHASIL","Informasi", JOptionPane.INFORMATION_MESSAGE);
             reset();
@@ -310,7 +291,7 @@ public class form_entry_mahasiswa extends javax.swing.JDialog {
         //txt_tanggal_lahir.setDate(null);
         //txt_tanggal_masuk.setDate(null);
         t_tgl_lahir.setText(null);
-        t_tgl_masuk.setText(null);
+        //t_tgl_masuk.setText(null);
         txt_tempat_lahir.setText("");
     }
     
@@ -321,7 +302,7 @@ public class form_entry_mahasiswa extends javax.swing.JDialog {
 
     private void bnt_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnt_updateActionPerformed
         Connection con = new koneksi_2().getConnection();
-        String no_nim="", nama="", tempat_lahir="", jurusan="", tanggal_lahir, tanggal_masuk;
+        String no_nim="", nama="", tempat_lahir="", jurusan="", tanggal_lahir;
         //java.util.Date tanggal_lahir=null;
         //java.util.Date tanggal_masuk=null;
         no_nim = txt_nim.getText();
@@ -330,18 +311,18 @@ public class form_entry_mahasiswa extends javax.swing.JDialog {
         jurusan = txt_jurusan.getText();
         //tanggal_masuk = (java.util.Date) this.txt_tanggal_masuk.getDate();
         //tanggal_lahir = (java.util.Date) this.txt_tanggal_lahir.getDate();
-        tanggal_masuk = t_tgl_masuk.getText();
+        //tanggal_masuk = t_tgl_masuk.getText();
         tanggal_lahir = t_tgl_lahir.getText();
         if (tanggal_lahir==null){
             JOptionPane.showMessageDialog(null, "Silahkan isi TANGGAL LAHIR","Informasi", JOptionPane.INFORMATION_MESSAGE);
             //txt_tanggal_lahir.requestFocus();
         }
-        else if (tanggal_masuk==null){
-            JOptionPane.showMessageDialog(null, "Silahkan isi TANGGAL MASUK","Informasi", JOptionPane.INFORMATION_MESSAGE);
-            //txt_tanggal_masuk.requestFocus();
-        }
+//        else if (tanggal_masuk==null){
+//            JOptionPane.showMessageDialog(null, "Silahkan isi TANGGAL MASUK","Informasi", JOptionPane.INFORMATION_MESSAGE);
+//            //txt_tanggal_masuk.requestFocus();
+//        }
         else {
-            String sql="update tb_mahasiswa set nama=?, tempat_lahir=?, tanggal_lahir=?, jurusan=?, tanggal_masuk=? where no_nim='"+no_nim+"'";
+            String sql="update tb_anggota set nama=?, tempat_lahir=?, tanggal_lahir=?, kedudukan=? where no_nim='"+no_nim+"'";
             java.sql.PreparedStatement stat = null;
             try {
                 stat = con.prepareStatement(sql);
@@ -351,7 +332,7 @@ public class form_entry_mahasiswa extends javax.swing.JDialog {
                 stat.setString(3, tanggal_lahir);
                 stat.setString(4, jurusan);
                 //stat.setDate(5, new java.sql.Date(tanggal_masuk.getTime()));
-                stat.setString(5, tanggal_masuk);
+                //stat.setString(5, tanggal_masuk);
                 stat.executeUpdate();
                 JOptionPane.showMessageDialog(null,"Data BERHASIL di Ubah");
                 tampil_tb_mahasiswa();
@@ -370,7 +351,7 @@ public class form_entry_mahasiswa extends javax.swing.JDialog {
             try{
                 //panggil method koneksi
                 Connection con = new koneksi_2().getConnection();
-                String sql="delete from tb_mahasiswa where no_nim='"+no_nim+"'";
+                String sql="delete from tb_anggota where no_nim='"+no_nim+"'";
                 Statement st = con.createStatement();
                 st.executeUpdate(sql);
                 JOptionPane.showMessageDialog(null,"Data Berhasil di hapus");
@@ -391,19 +372,19 @@ public class form_entry_mahasiswa extends javax.swing.JDialog {
         t_tgl_lahir.setText((String)tb_mahasiswa.getValueAt(baris, 3));
         txt_jurusan.setText((String)tb_mahasiswa.getValueAt(baris, 4));
         //txt_tanggal_masuk.setDate((Date)tb_mahasiswa.getValueAt(baris, 5));
-        t_tgl_masuk.setText((String)tb_mahasiswa.getValueAt(baris, 5));
+        //t_tgl_masuk.setText((String)tb_mahasiswa.getValueAt(baris, 5));
     }
     
     private DefaultTableModel tabmode;
     
     //menampilkan data dari datatabe ke tabel
     public void tampil_tb_mahasiswa(){
-        Object []baris = {"No Bp","Nama","Tempat Lahir","Tanggal Lhair","Jurusan","Tanggal Masuk"};
+        Object []baris = {"No anggota","Nama","Tempat Lahir","Tanggal Lahir","Jurusan"};
         tabmode = new DefaultTableModel(null, baris);
         tb_mahasiswa.setModel(tabmode);
         Connection con = new koneksi_2().getConnection();
         try {
-            String sql = "select * from tb_mahasiswa order by no_nim asc";
+            String sql = "select * from tb_anggota order by no_nim asc";
             java.sql.Statement stat = con.createStatement();
             java.sql.ResultSet hasil = stat.executeQuery(sql);
             while (hasil.next()){
@@ -411,10 +392,11 @@ public class form_entry_mahasiswa extends javax.swing.JDialog {
                 String nama = hasil.getString("nama");
                 String tempat_lahir = hasil.getString("tempat_lahir");
                 String tanggal_lahir = hasil.getString("tanggal_lahir");
-                String jurusan = hasil.getString("jurusan"); 
-                String tanggal_masuk = hasil.getString("tanggal_masuk");
-                String[] data = {no_nim, nama, tempat_lahir, tanggal_lahir, jurusan, tanggal_masuk};
+                String jurusan = hasil.getString("kedudukan"); 
+                //String tanggal_masuk = hasil.getString("tanggal_masuk");
+                String[] data = {no_nim, nama, tempat_lahir, tanggal_lahir, jurusan};
                 tabmode.addRow(data);
+                
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Menampilkan data GAGAL","Informasi", JOptionPane.INFORMATION_MESSAGE);
@@ -435,20 +417,21 @@ public class form_entry_mahasiswa extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(form_entry_mahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(form_entry_anggota.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(form_entry_mahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(form_entry_anggota.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(form_entry_mahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(form_entry_anggota.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(form_entry_mahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(form_entry_anggota.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                form_entry_mahasiswa dialog = new form_entry_mahasiswa(new javax.swing.JFrame(), true);
+                form_entry_anggota dialog = new form_entry_anggota(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -468,16 +451,13 @@ public class form_entry_mahasiswa extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton reset;
     private javax.swing.JButton simpan;
     private javax.swing.JTextField t_tgl_lahir;
-    private javax.swing.JTextField t_tgl_masuk;
     private javax.swing.JTable tb_mahasiswa;
     private javax.swing.JTextField txt_jurusan;
     private javax.swing.JTextField txt_nama;

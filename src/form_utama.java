@@ -303,7 +303,7 @@ public class form_utama extends javax.swing.JFrame {
         data_mahasiswa.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Data Mahasiswa", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/file-edit-16x16.png"))); // NOI18N
-        jButton1.setText("Input Data Mahasiswa");
+        jButton1.setText("Input Data Anggota");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -359,7 +359,7 @@ public class form_utama extends javax.swing.JFrame {
                     .addComponent(jScrollPane1)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, data_mahasiswaLayout.createSequentialGroup()
                         .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 187, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 199, Short.MAX_VALUE)
                         .addGroup(data_mahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, data_mahasiswaLayout.createSequentialGroup()
                                 .addComponent(txt_cari_mahasiswa, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -384,7 +384,7 @@ public class form_utama extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Data Mahasiswa", data_mahasiswa);
+        jTabbedPane1.addTab("Data Anggota", data_mahasiswa);
 
         data.setText("Data");
 
@@ -536,12 +536,12 @@ public class form_utama extends javax.swing.JFrame {
     
     //menampilkan data dari datatabe ke tabel
     public void tampil_tb_mahasiswa(){
-        Object []baris = {"NIM","Nama","Tempat Lahir","Tanggal Lhair","Jurusan","Tanggal Masuk"};
+        Object []baris = {"NO Anggota","Nama","Tempat Lahir","Tanggal Lahir","Kedudukan"};
         tabmode = new DefaultTableModel(null, baris);
         tb_mahasiswa.setModel(tabmode);
         Connection con = new koneksi_2().getConnection();
         try {
-            String sql = "select * from tb_mahasiswa order by no_nim asc";
+            String sql = "select * from tb_anggota order by no_nim asc";
             java.sql.Statement stat = con.createStatement();
             java.sql.ResultSet hasil = stat.executeQuery(sql);
             while (hasil.next()){
@@ -549,9 +549,9 @@ public class form_utama extends javax.swing.JFrame {
                 String nama = hasil.getString("nama");
                 String tempat_lahir = hasil.getString("tempat_lahir");
                 String tanggal_lahir = hasil.getString("tanggal_lahir");
-                String jurusan = hasil.getString("jurusan"); 
-                String tanggal_masuk = hasil.getString("tanggal_masuk");
-                String[] data = {no_nim, nama, tempat_lahir, tanggal_lahir, jurusan, tanggal_masuk};
+                String jurusan = hasil.getString("kedudukan"); 
+                //String tanggal_masuk = hasil.getString("tanggal_masuk");
+                String[] data = {no_nim, nama, tempat_lahir, tanggal_lahir, jurusan};
                 tabmode.addRow(data);
             }
         } catch (Exception e) {
@@ -570,7 +570,7 @@ public class form_utama extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        new form_entry_mahasiswa(this, rootPaneCheckingEnabled).setVisible(true);
+        new form_entry_anggota(this, rootPaneCheckingEnabled).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btn_edit_bukuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_edit_bukuActionPerformed
@@ -632,7 +632,7 @@ public class form_utama extends javax.swing.JFrame {
         String cari = txt_cari_mahasiswa.getText();
         //String to=jCombo.getItemAt(i).toString();
         
-       Object[] Baris={"NIM","Nama","Tempat Lahir","Tanggal Lhair","Jurusan","Tanggal Masuk"};
+       Object[] Baris={"No Anggota","Nama","Tempat Lahir","Tanggal Lhair","Kedudukan"};
        tabmode = new DefaultTableModel(null, Baris);
        tb_mahasiswa.setModel(tabmode);
 
@@ -641,13 +641,13 @@ public class form_utama extends javax.swing.JFrame {
        
        //untuk menampilkan di table
        try{
-           String sql="Select * from tb_mahasiswa where "
+           String sql="Select * from tb_anggota where "
                    + "no_nim like '%"+cari+"%' "
                    + "OR nama like '%"+cari+"%' "
                    + "OR tempat_lahir like '%"+cari+"%' "
                    + "OR tanggal_lahir like '%"+cari+"%' "
                    + "OR jurusan like '%"+cari+"%' "
-                   + "OR tanggal_masuk like '%"+cari+"%' "
+                   //+ "OR tanggal_masuk like '%"+cari+"%' "
                    + "order by no_nim asc";
            java.sql.Statement stmt=koneksi.createStatement();
            java.sql.ResultSet rslt=stmt.executeQuery(sql);
