@@ -280,7 +280,7 @@ public class form_entry_peminjaman extends javax.swing.JDialog {
 
     private void btn_simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_simpanActionPerformed
         // TODO add your handling code here:
-        String no_nim="", nama="", jurusan="", kode_buku="", judul_buku="", tanggal_terbit="", tanggal_pinjam="";
+        String no_nim="", nama="", jurusan="", kode_buku="", judul_buku="", tanggal_terbit="", tanggal_pinjam="",status="pinjam";
         no_nim = txt_nim.getText();
         nama = txt_nama.getText();
         jurusan = txt_jurusan.getText();
@@ -290,7 +290,7 @@ public class form_entry_peminjaman extends javax.swing.JDialog {
         tanggal_pinjam = lbl_tanggal.getText();
         Connection con = new koneksi_2().getConnection();
         try {
-            String sql = "insert into tb_peminjaman values (?,?,?,?,?,?,?)";
+            String sql = "insert into tb_peminjaman values (?,?,?,?,?,?,?,?)";
             PreparedStatement stat = (PreparedStatement) con.prepareStatement(sql);
             stat.setString(1, no_nim);
             stat.setString(2, nama);
@@ -299,6 +299,7 @@ public class form_entry_peminjaman extends javax.swing.JDialog {
             stat.setString(5, judul_buku);
             stat.setString(6, tanggal_terbit);
             stat.setString(7, tanggal_pinjam);
+            stat.setString(7, status);
             stat.executeUpdate();
             JOptionPane.showMessageDialog(null, "Menyimpan data BERHASIL","Informasi", JOptionPane.INFORMATION_MESSAGE);
             reset();
@@ -312,7 +313,7 @@ public class form_entry_peminjaman extends javax.swing.JDialog {
         String no_nim="";
         no_nim =txt_nim.getText(); 
         Connection con = new koneksi_2().getConnection();
-        String sql = "select * from tb_mahasiswa where no_nim='"+no_nim+"'";
+        String sql = "select * from tb_anggota where no_nim='"+no_nim+"'";
         try {
             Statement stat = con.createStatement();
             ResultSet set = stat.executeQuery(sql);
@@ -401,7 +402,7 @@ public class form_entry_peminjaman extends javax.swing.JDialog {
         tb_peminjaman.setModel(tabmode);
         Connection con = new koneksi_2().getConnection();
         try {
-            String sql = "select * from tb_peminjaman order by no_nim asc";
+            String sql = "select * from tb_peminjaman where status='pinjam' order by no_nim asc";
             java.sql.Statement stat = con.createStatement();
             java.sql.ResultSet hasil = stat.executeQuery(sql);
             while (hasil.next()){
